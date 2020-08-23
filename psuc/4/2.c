@@ -1,33 +1,21 @@
 #include<stdio.h>
 
-int prime(int n)
-{
-	for(int i=2; i<n/2; i++)
-	{
-		if(n%i == 0 && n>1)
-			return 0; // not prime
-	}
-
-	if(n>1)	return 1; // prime
-	else return 0; 
-}
-
-
 int main()
 {
-	printf("enter the size of the array:\n");
-	int n=0;
-	scanf("%d", &n);
-	int arr[n];
+	printf("enter 3 numbers\n");
+	int largest = 0;
+	int num1, num2, num3;
 
-	printf("enter the array numbers:\n");
-	for(int i=0; i<n; i++)
-		scanf("%d", &arr[i]);
+	scanf("%d %d %d", &num1, &num2, &num3);
 
-	for(int i=0; i<n; i++)
-		if(prime(arr[i]))printf("%d ", arr[i]);
+	if(num1 > num2 && num1 > num3)
+		largest = num1;
+	else if(num2 > num3)
+		largest = num2;
+	else 
+		largest = num3;
 
-	printf("\n");
+	printf("larest number is : %d\n", largest);
 
 	return 0;
 }
