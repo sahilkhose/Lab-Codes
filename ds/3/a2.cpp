@@ -6,32 +6,33 @@ using namespace std;
 
 int main()
 {
-	Stack s;
+    Stack s1;
+    int flag = 1; // to check if ), ] or } is in the beginning
+    cout << "Enter the expression:\n";
+    char exp[100];
+    cin>>exp;
 
-	char a[40];
-	cout<<"Enter the expression:\n";
-	cin>>a;
+    for(int i=0; exp[i]!='\0'; i++)
+    {
+        if (exp[i] == '(' || exp[i] == '[' || exp[i] == '{'  )
+			s1.push(exp[i]);
 
-	int len_a = 0;
+        else if (exp[i] == ')' || exp[i] == ']' || exp[i] == '}')
+        {
+            if (s1.isEmpty())
+            {
+                flag = 0;
+                break;
+            }
+            if( (s1.topele() == '(' && exp[i] == ')') || (s1.topele() == '[' && exp[i] == ']') || (s1.topele() == '{' && exp[i] == '}') )
+				s1.pop();
+        }
+    }
 
-	for(len_a=0; a[len_a]!='\0'; len_a++)
-		if(a[len_a] == '(' || a[len_a] == '{' || a[len_a] == '[' || a[len_a] == ')' || a[len_a] == '}' || a[len_a] == ']')
-			s.push(a[len_a]);
+    if (s1.isEmpty() && flag == 1)
+		cout << "The expression is balanced." << endl;
+    else if ( flag == 0 || s1.isEmpty() == 0)
+		cout << "The expression is not balanced." << endl;
 
-	// WRONG IMPLEMENTATION:
-	// int flag = 1;
-	// for(int i=0; i<len_a; i++)
-	// {
-	// 	if(s.pop() != s.peek(i))
-	// 	{
-	// 		cout<<"Unbalanced paranthesis!!"<<endl;
-	// 		flag = 0;
-	// 		break;
-	// 	}
-	// }
-	// if(flag)
-	// 	cout<<"Balanced paranthesis!!"<<endl;
-
-
-	return 0;
+    return 0;
 }

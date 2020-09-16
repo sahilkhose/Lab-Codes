@@ -1,16 +1,16 @@
 #include<iostream>
 using namespace std;
 
-#define STACK_SIZE 10
+#define STACK_SIZE 100
 class Stack
 {
 	int s[10];
-	int item;
 	int top;
 public:
 	Stack();
 	void push(int item);
 	int pop();
+	int topele();
 	void display();
 };
 
@@ -51,4 +51,14 @@ void Stack::display()
 	for(i=0; i<=top; i++)
 		cout<<s[i]<<" ";
 	cout<<endl;
+}
+
+int Stack::topele()
+{
+	if(top == -1)
+	{
+		// cout<<"Stack is Empty"<<endl;
+		return -999;
+	}
+	return s[top];
 }

@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-#define STACK_SIZE 10
+#define STACK_SIZE 100
 class Stack
 {
 	char s[10];
@@ -11,13 +11,19 @@ public:
 	Stack();
 	void push(char item);
 	char pop();
-	char peek(int i);
+	char topele();
 	void display();
+	bool isEmpty();
 };
 // IMPROVE THIS FUNCTION
-char Stack::peek(int i)
+char Stack::topele()
 {
-	return s[i];
+	if(top == -1)
+	{
+		// cout<<"Stack is Empty"<<endl;
+		return char(-999);
+	}
+	return s[top];
 }
 
 Stack::Stack()
@@ -48,7 +54,7 @@ char Stack::pop()
 void Stack::display()
 {
 	int i;
-	if(top==-1)
+	if(top == -1)
 	{
 		cout<<"Empty Stack\n";
 		return;
@@ -57,4 +63,11 @@ void Stack::display()
 	for(i=0; i<=top; i++)
 		cout<<s[i]<<" ";
 	cout<<endl;
+}
+
+bool Stack::isEmpty()
+{
+	if(top == -1)
+		return true;
+	return false;
 }
